@@ -49,8 +49,7 @@ public abstract class Polymorph {
 	}
 
 	public void update() {
-		x = x + speed;
-		y = y +speed;
+
 	}
 
 	public abstract void draw(Graphics g);
