@@ -5,8 +5,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -20,7 +23,7 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 
 	// Polymorph bluePoly;
 	// Polymorph redPoly;
-	Polymorph[] pol = new Polymorph[5];
+	Polymorph[] pol = new Polymorph[6];
 
 	public static void main(String[] args) {
 		new PolymorphWindow().buildWindow();
@@ -33,12 +36,15 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		window.getContentPane().setPreferredSize(new Dimension(500, 500));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.pack();
+		//window.addActionListener(this);
 		window.setVisible(true);
 		pol[0] = new BluePolymorph(0, 0, 50, 50);
 		pol[1] = new RedMorph(100, 100, 50, 50);
 		pol[2] = new circleMorph(50, 50, 50, 50);
 		pol[3] = new mouseMorph(0,0,50,50);
 		pol[4] = new imageMorph(250,250,240,210);
+		pol[5] = new textMorph(200,200, 50,50);
+		
 		timer = new Timer(1000 / 30, this);
 		timer.start();
 	}
@@ -65,5 +71,10 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		for (int i = 0; i < pol.length; i++) {
 			pol[i].update();
 		}
+		if(e.getSource().equals(pol[5]))
+			JOptionPane.showMessageDialog(null, "Hi");
+		
 	}
 }
+
+	
