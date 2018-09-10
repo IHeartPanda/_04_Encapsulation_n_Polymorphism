@@ -49,7 +49,7 @@ public class HospitalTest extends TestCase {
 
 	/* A doctor has a list of patients */
 	public void testAssignDoctor() throws Exception {
-		Doctor testDoctor = new GeneralPractitioner();
+		GeneralPractitioner testDoctor = new GeneralPractitioner();
 		testDoctor.assignPatient(new Patient());
 		assertEquals(1, testDoctor.getPatients().size());
 		testDoctor.assignPatient(new Patient());
@@ -68,7 +68,7 @@ public class HospitalTest extends TestCase {
 
 	/* Doctors work on their Patients by checking their pulses. */
 	public void testDoctorsWork() throws Exception {
-		Doctor testDoctor = new GeneralPractitioner();
+		Doctor testDoctor = (Doctor) new GeneralPractitioner();
 		Patient max = new Patient();
 		Patient macky = new Patient();
 		testDoctor.assignPatient(max);
@@ -92,7 +92,7 @@ public class HospitalTest extends TestCase {
 		} catch (DoctorFullException dfe) {
 			assertTrue(true);
 		}
-assertTrue(testDoctor.getPatients().size() == 3);
+		assertTrue(testDoctor.getPatients().size() == 3);
 	}
 
 	public void test8Patients() throws Exception {
@@ -108,7 +108,5 @@ assertTrue(testDoctor.getPatients().size() == 3);
 		assertEquals(3, testDoctors.get(1).getPatients().size());
 		assertEquals(2, testDoctors.get(2).getPatients().size());
 	}
-
-
 
 }

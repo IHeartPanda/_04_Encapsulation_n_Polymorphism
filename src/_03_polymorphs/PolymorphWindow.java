@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,7 +25,7 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 	// Polymorph bluePoly;
 	// Polymorph redPoly;
 	Polymorph[] pol = new Polymorph[6];
-
+	ArrayList<Polymorph> pols = new ArrayList<Polymorph>();
 	public static void main(String[] args) {
 		new PolymorphWindow().buildWindow();
 
@@ -35,16 +36,21 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		window.add(this);
 		window.getContentPane().setPreferredSize(new Dimension(500, 500));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		window.pack();
 		//window.addActionListener(this);
 		window.setVisible(true);
-		pol[0] = new BluePolymorph(0, 0, 50, 50);
-		pol[1] = new RedMorph(100, 100, 50, 50);
-		pol[2] = new circleMorph(50, 50, 50, 50);
-		pol[3] = new mouseMorph(0,0,50,50);
-		pol[4] = new imageMorph(250,250,240,210);
-		pol[5] = new textMorph(200,200, 50,50);
+		pols.add(new BluePolymorph(0, 0, 50, 50));
+		pols.add(new RedMorph(100, 100, 50, 50));
 		
+		pols.add(new circleMorph(50, 50, 50, 50));
+		mouseMorph m = new mouseMorph(0,0,50,50);
+		pols.add(m);
+		pols.add(new imageMorph(250,250,240,210));
+		textMorph t = new textMorph(200,200, 50,50);
+		pols.add(t);
+		window.addMouseListener(t);
+		window.addMouseMotionListener(m);
 		timer = new Timer(1000 / 30, this);
 		timer.start();
 	}
@@ -53,9 +59,9 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		// draw background
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(0, 0, 500, 500);
-		for (int i = 0; i < pol.length; i++) {
-			if(pol[i] != null) {
-			pol[i].draw(g);
+		for (int i = 0; i < pols.size(); i++) {
+			if(pols.get(i) != null) {
+			pols.get(i).draw(g);
 			}
 		}
 		// draw polymorph
@@ -68,11 +74,9 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		repaint();
 		// bluePoly.update();
 		// redPoly.update();
-		for (int i = 0; i < pol.length; i++) {
-			pol[i].update();
+		for (int i = 0; i < pols.size(); i++) {
+		pols.get(i).update();	
 		}
-		if(e.getSource().equals(pol[5]))
-			JOptionPane.showMessageDialog(null, "Hi");
 		
 	}
 }

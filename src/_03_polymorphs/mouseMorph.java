@@ -5,8 +5,11 @@ import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class mouseMorph extends Polymorph{
+public class mouseMorph extends Polymorph implements MouseMotionListener{
 	int mouseX;
 	int mouseY;
 
@@ -19,12 +22,22 @@ public class mouseMorph extends Polymorph{
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		g.setColor(Color.CYAN);
-		g.fillRect(mouseX, mouseY - 50, getWidth(), getHeight());
+		g.fillRect(mouseX, mouseY, getWidth(), getHeight());
 	}
 	public void update() {
-		mouseY = MouseInfo.getPointerInfo().getLocation().y;
-		mouseX = MouseInfo.getPointerInfo().getLocation().x;   
+		
 	}
 
-	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		mouseX = e.getX();
+		mouseY = e.getY();
+		
+	}
 }
