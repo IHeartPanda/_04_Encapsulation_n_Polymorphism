@@ -97,9 +97,18 @@ public class HospitalTest extends TestCase {
 
 	public void test8Patients() throws Exception {
 		// TODO: add 3 doctors to hospital
-
+		Doctor one = new Doctor();
+		Doctor two = new Doctor();
+		Doctor three = new Doctor();
 		// TODO: add 8 patients to hospital
-
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
+		testHospital.addPatient(new Patient());
 		// hospital assigns patients to doctors
 		testHospital.assignPatientsToDoctors();
 		// hospital.getDoctors shows doctors have 3, 3, 2 patients

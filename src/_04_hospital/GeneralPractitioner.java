@@ -1,22 +1,22 @@
 package _04_hospital;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GeneralPractitioner extends Doctor{
 
 	public Object makesHouseCalls() {
 		// TODO Auto-generated method stub
-		return null;
+		return true;
 	}
 
 	public void assignPatient(Patient patient) {
-		// TODO Auto-generated method stub
-		
+		patientList.add(patient);		
 	}
 
-	public List<Doctor> getPatients() {
+	public ArrayList<Patient> getPatients() {
 		// TODO Auto-generated method stub
-		return null;
+		return patientList;
 	}
 
 }
