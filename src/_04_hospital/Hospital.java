@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hospital {
-	ArrayList<Doctor> doctorList= new ArrayList<Doctor>(); 
+	ArrayList<Doctor> doctorList = new ArrayList<Doctor>();
 	ArrayList<Patient> patientList = new ArrayList<Patient>();
+
 	public void addDoctor(GeneralPractitioner generalPractitioner) {
 		// TODO Auto-generated method stub
 		doctorList.add(generalPractitioner);
+	}
+
+	public void addDoctor(Doctor doctor) {
+		// TODO Auto-generated method stub
+		doctorList.add(doctor);
 	}
 
 	public void addDoctor(Surgeon generalPractitioner) {
@@ -32,11 +38,22 @@ public class Hospital {
 	}
 
 	public void assignPatientsToDoctors() {
+		System.out.println("Hi");
+		int whichDoctor = 0;
+		int numOfPatients = 0;
 		// TODO Auto-generated method stub
-		
+		for (int i = 0; i < doctorList.size(); i++) {
+			try {
+				for (int j = numOfPatients; j < patientList.size(); j++) {
+					doctorList.get(whichDoctor).assignPatient(patientList.get(i));
+					numOfPatients++;
+				}
+			} catch (Exception e) {
+				whichDoctor++;
+			}
+		}
+
+		System.out.println(doctorList.get(0).getPatients().size());
 	}
-
-	
-
 
 }

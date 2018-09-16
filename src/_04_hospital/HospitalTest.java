@@ -1,9 +1,5 @@
 package _04_hospital;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -97,9 +93,9 @@ public class HospitalTest extends TestCase {
 
 	public void test8Patients() throws Exception {
 		// TODO: add 3 doctors to hospital
-		Doctor one = new Doctor();
-		Doctor two = new Doctor();
-		Doctor three = new Doctor();
+		testHospital.addDoctor(new Doctor());
+		testHospital.addDoctor(new Doctor());
+		testHospital.addDoctor(new Doctor());
 		// TODO: add 8 patients to hospital
 		testHospital.addPatient(new Patient());
 		testHospital.addPatient(new Patient());
